@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Technical Documentation Page</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="main-container">
+      <nav id="navbar">
+        <header id="navbar-header">Dart Documentation</header>
+        <div>
+          <ul>
+            <li>
+              <a href="#A_basic_Dart_program" class="nav-link"
+                >A basic Dart program</a
+              >
+            </li>
+            <li>
+              <a href="#Important_concepts" class="nav-link"
+                >Important concepts</a
+              >
+            </li>
+            <li><a href="#Variables" class="nav-link">Variables</a></li>
+            <li>
+              <a href="#Built-in_types" class="nav-link">Built-in types</a>
+            </li>
+            <li><a href="#Functions" class="nav-link">Functions</a></li>
+            <li>
+              <a href="#Control_flow_statements" class="nav-link"
+                >Control flow statements</a
+              >
+            </li>
+            <li><a href="#Exceptions" class="nav-link">Exceptions</a></li>
+            <li><a href="#Classes" class="nav-link">Classes</a></li>
+            <li><a href="#Generics" class="nav-link">Generics</a></li>
+            <li>
+              <a href="#Libraries_and_visibility" class="nav-link"
+                >Libraries and visibility</a
+              >
+            </li>
+            <li>
+              <a href="#Asynchrony_support" class="nav-link"
+                >Asynchrony support</a
+              >
+            </li>
+            <li><a href="#Generators" class="nav-link">Generators</a></li>
+            <li><a href="#Isolates" class="nav-link">Isolates</a></li>
+            <li><a href="#Comments" class="nav-link">Comments</a></li>
+            <li><a href="#Reference" class="nav-link">Reference</a></li>
+          </ul>
+        </div>
+      </nav>
+      <main id="main-doc">
+        <section class="main-section" id="A_basic_Dart_program">
+          <header>A basic Dart program</header>
+          <p>
+            The following code uses many of Dart’s most basic features:
+          </p>
+          <div>
+            <code>
+              // Define a function. <br />
+              printInteger(int aNumber) {<br />
+              &nbsp;&nbsp;print('The number is $aNumber.'); // Print to
+              console.<br />
+              }<br />
+              <br />
+              // This is where the app starts executing. <br />
+              main() { <br />
+              &nbsp;&nbsp;var number = 42; // Declare and initialize a
+              variable.<br />
+              &nbsp;&nbsp;printInteger(number); // Call a function.<br />
+              }
+            </code>
+          </div>
+          <p>
+            Here’s what this program uses that applies to all (or almost all)
+            Dart apps:
+          </p>
+          <p>
+            // This is a comment. <br />
+            A single-line comment. Dart also supports multi-line and document
+            comments. For details, see Comments.
+          </p>
+        </section>
+        <section class="main-section" id="Important_concepts">
+          <header>Important concepts</header>
+          <p>
+            As you learn about the Dart language, keep these facts and concepts
+            in mind:
+          </p>
+          <ul>
+            <li>
+              Everything you can place in a variable is an object, and every
+              object is an instance of a class. Even numbers, functions, and
+              null are objects. All objects inherit from the Object class.
+            </li>
+            <li>
+              Although Dart is strongly typed, type annotations are optional
+              because Dart can infer types. In the code above, number is
+              inferred to be of type int. When you want to explicitly say that
+              no type is expected, use the special type dynamic.
+            </li>
+            <li>
+              Dart supports top-level functions (such as main()), as well as
+              functions tied to a class or object (static and instance methods,
+              respectively). You can also create functions within functions
+              (nested or local functions).
+            </li>
+            <li>
+              Similarly, Dart supports top-level variables, as well as variables
+              tied to a class or object (static and instance variables).
+              Instance variables are sometimes known as fields or properties.
+            </li>
+            <li>
+              Identifiers can start with a letter or underscore (_), followed by
+              any combination of those characters plus digits.
+            </li>
+          </ul>
+        </section>
+        <section class="main-section" id="Variables">
+          <header>Variables</header>
+          <p>
+            Here’s an example of creating a variable and initializing it:
+          </p>
+          <div>
+            <code>var name = 'Bob'; </code>
+          </div>
+          <p>
+            Variables store references. The variable called name contains a
+            reference to a String object with a value of “Bob”.
+          </p>
+          <p>
+            The type of the name variable is inferred to be String, but you can
+            change that type by specifying it. If an object isn’t restricted to
+            a single type, specify the Object or dynamic type, following design
+            guidelines.
+          </p>
+          <div>
+            <code>dynamic name = 'Bob'; </code>
+          </div>
+          <p>
+            Another option is to explicitly declare the type that would be
+            inferred:
+          </p>
+          <div>
+            <code>String name = 'Bob'; </code>
+          </div>
+          <p>
+            <strong>Note:</strong> This page follows the style guide
+            recommendation of using var, rather than type annotations, for local
+            variables.
+          </p>
+        </section>
+        <section class="main-section" id="Built-in_types">
+          <header>Built-in types</header>
+          <p>The Dart language has special support for the following types:</p>
+          <ul>
+            <li>numbers</li>
+            <li>strings</li>
+            <li>booleans</li>
+            <li>lists (also known as arrays)</li>
+            <li>sets</li>
+            <li>maps</li>
+            <li>runes (for expressing Unicode characters in a string)</li>
+            <li>symbols</li>
+          </ul>
+          <p>
+            You can initialize an object of any of these special types using a
+            literal. For example, 'this is a string' is a string literal, and
+            true is a boolean literal.
+          </p>
+          <p>
+            Because every variable in Dart refers to an object—an instance of a
+            class—you can usually use constructors to initialize variables. Some
+            of the built-in types have their own constructors. For example, you
+            can use the Map() constructor to create a map.
+          </p>
+        </section>
+        <section class="main-section" id="Functions">
+          <header>Functions</header>
+          <p>
+            Dart is a true object-oriented language, so even functions are
+            objects and have a type, Function. This means that functions can be
+            assigned to variables or passed as arguments to other functions. You
+            can also call an instance of a Dart class as if it were a function.
+            For details, see Callable classes.
+          </p>
+          <p>Here’s an example of implementing a function:</p>
+          <div>
+            <code>
+              bool isNoble(int atomicNumber) { <br />
+              &nbsp;&nbsp; return _nobleGases[atomicNumber] != null;<br />
+              }
+            </code>
+          </div>
+          <p>
+            Although Effective Dart recommends type annotations for public APIs,
+            the function still works if you omit the types:
+          </p>
+          <div>
+            <code>
+              isNoble(atomicNumber) { <br />
+              &nbsp;&nbsp; return _nobleGases[atomicNumber] != null; <br />
+              }
+            </code>
+          </div>
+          <p>
+            For functions that contain just one expression, you can use a
+            shorthand syntax:
+          </p>
+          <div>
+            <code>
+              bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] !=
+              null;
+            </code>
+          </div>
+          <p>
+            The => expr syntax is a shorthand for { return expr; }. The =>
+            notation is sometimes referred to as arrow syntax.
+          </p>
+        </section>
+        <section class="main-section" id="Control_flow_statements">
+          <header>Control flow statements</header>
+          <p>
+            You can control the flow of your Dart code using any of the
+            following:
+          </p>
+          <ul>
+            <li>if and else</li>
+            <li>for loops</li>
+            <li>while and do-while loops</li>
+            <li>break and continue</li>
+            <li>switch and case</li>
+            <li>assert</li>
+          </ul>
+          <p>
+            You can also affect the control flow using try-catch and throw, as
+            explained in Exceptions.
+          </p>
+        </section>
+        <section class="main-section" id="Exceptions">
+          <header>Exceptions</header>
+          <p>
+            Your Dart code can throw and catch exceptions. Exceptions are errors
+            indicating that something unexpected happened. If the exception
+            isn’t caught, the isolate that raised the exception is suspended,
+            and typically the isolate and its program are terminated.
+          </p>
+          <p>
+            In contrast to Java, all of Dart’s exceptions are unchecked
+            exceptions. Methods do not declare which exceptions they might
+            throw, and you are not required to catch any exceptions.
+          </p>
+          <p>
+            Dart provides Exception and Error types, as well as numerous
+            predefined subtypes. You can, of course, define your own exceptions.
+            However, Dart programs can throw any non-null object—not just
+            Exception and Error objects—as an exception.
+          </p>
+        </section>
+        <section class="main-section" id="Classes">
+          <header>Classes</header>
+          <p>
+            Dart is an object-oriented language with classes and mixin-based
+            inheritance. Every object is an instance of a class, and all classes
+            descend from Object. Mixin-based inheritance means that although
+            every class (except for Object) has exactly one superclass, a class
+            body can be reused in multiple class hierarchies.
+          </p>
+        </section>
+        <section class="main-section" id="Generics">
+          <header>Generics</header>
+          <p>
+            reason for using generics is to reduce code duplication. Generics
+            let you share a single interface and implementation between many
+            types, while still taking advantage of static analysis. For example,
+            say you create an interface for caching an object:
+          </p>
+          <div>
+            <code>
+              abstract class ObjectCache { <br />
+              &nbsp;&nbsp;Object getByKey(String key); <br />
+              &nbsp;&nbsp;void setByKey(String key, Object value); <br />
+              }
+            </code>
+          </div>
+          <p>
+            You discover that you want a string-specific version of this
+            interface, so you create another interface.
+          </p>
+        </section>
+        <section class="main-section" id="Libraries_and_visibility">
+          <header>Libraries and visibility</header>
+          <p>
+            The import and library directives can help you create a modular and
+            shareable code base. Libraries not only provide APIs, but are a unit
+            of privacy: identifiers that start with an underscore (_) are
+            visible only inside the library. Every Dart app is a library, even
+            if it doesn’t use a library directive.
+          </p>
+        </section>
+        <section class="main-section" id="Asynchrony_support">
+          <header>Asynchrony support</header>
+          <p>
+            Dart libraries are full of functions that return Future or Stream
+            objects. These functions are asynchronous: they return after setting
+            up a possibly time-consuming operation (such as I/O), without
+            waiting for that operation to complete. The async and await keywords
+            support asynchronous programming, letting you write asynchronous
+            code that looks similar to synchronous code.
+          </p>
+        </section>
+        <section class="main-section" id="Generators">
+          <header>Generators</header>
+          <p>
+            When you need to lazily produce a sequence of values, consider using
+            a generator function. Dart has built-in support for two kinds of
+            generator functions:
+          </p>
+          <ul>
+            <li>Synchronous generator: Returns an Iterable object.</li>
+            <li>Asynchronous generator: Returns a Stream object.</li>
+          </ul>
+          <p>
+            To implement a synchronous generator function, mark the function
+            body as sync*, and use yield statements to deliver values:
+          </p>
+          <div>
+            <code>
+              Iterable&lt;int&gt; naturalsTo(int n) sync* { <br />
+              &nbsp;&nbsp;int k = 0; <br />
+              &nbsp;&nbsp;while (k < n) yield k++; <br />
+              }
+            </code>
+          </div>
+          <p>
+            To implement an asynchronous generator function, mark the function
+            body as async*, and use yield statements to deliver values.
+          </p>
+        </section>
+        <section class="main-section" id="Isolates">
+          <header>Isolates</header>
+          <p>
+            Most computers, even on mobile platforms, have multi-core CPUs. To
+            take advantage of all those cores, developers traditionally use
+            shared-memory threads running concurrently. However, shared-state
+            concurrency is error prone and can lead to complicated code.
+          </p>
+          <p>
+            Instead of threads, all Dart code runs inside of isolates. Each
+            isolate has its own memory heap, ensuring that no isolate’s state is
+            accessible from any other isolate.
+          </p>
+        </section>
+        <section class="main-section" id="Comments">
+          <header>Comments</header>
+          <p>
+            Dart supports single-line comments, multi-line comments, and
+            documentation comments.
+          </p>
+          <p>
+            A single-line comment begins with //. Everything between // and the
+            end of line is ignored by the Dart compiler.
+          </p>
+          <div>
+            <code>
+              void main() { <br />
+              &nbsp;&nbsp; // TODO: refactor into an
+              AbstractLlamaGreetingFactory? <br />
+              &nbsp;&nbsp; print('Welcome to my Llama farm!'); <br />
+              }
+            </code>
+          </div>
+          <p>
+            A multi-line comment begins with /* and ends with */. Everything
+            between /* and */ is ignored by the Dart compiler (unless the
+            comment is a documentation comment; see the next section).
+            Multi-line comments can nest.
+          </p>
+          <div>
+            <code>
+              void main() { <br />
+              &nbsp;&nbsp;&nbsp;/* <br />
+              &nbsp;&nbsp;&nbsp; * This is a lot of work. Consider raising
+              chickens. <br />
+              &nbsp;&nbsp; Llama larry = Llama(); <br />
+              &nbsp;&nbsp; larry.feed(); <br />
+              &nbsp;&nbsp; larry.exercise(); <br />
+              &nbsp;&nbsp; larry.clean(); <br />
+              &nbsp;&nbsp;&nbsp; */ <br />
+              }
+            </code>
+          </div>
+          <p>
+            Documentation comments are multi-line or single-line comments that
+            begin with /// or /**. Using /// on consecutive lines has the same
+            effect as a multi-line doc comment.
+          </p>
+        </section>
+        <section class="main-section" id="Reference">
+          <header>Reference</header>
+          <p>
+            All the documentation in this page is taken from
+            <a href="https://dart.dev/" target="_blank">dart.dev</a>
+          </p>
+        </section>
+      </main>
+    </div>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
